@@ -54,7 +54,8 @@ function App() {
       <Footer />
       <PopupWithForm
         title=" Редактировать профиль"
-        name="popup__heading"
+        name="profile"
+        container="popup__container-profile"
         isOpen={isEditProfilePopupOpen}
         buttonText="Сохранить"
         onClose={closeAllPopup}
@@ -63,6 +64,7 @@ function App() {
           className="form__container form__container_type_name"
           name="name"
           type="text"
+          placeholder="Имя"
           id="name"
           minLength="2"
           maxLength="40"
@@ -73,6 +75,7 @@ function App() {
           className="form__container form__container_type_info"
           name="about"
           type="text"
+          placeholder="О себе"
           id="about"
           minLength="2"
           maxLength="200"
@@ -82,7 +85,8 @@ function App() {
       </PopupWithForm>
       <PopupWithForm
         title="Новое место"
-        name="popup__heading"
+        name="add-card"
+        container="popup__container-add-card"
         onClose={closeAllPopup}
         isOpen={isAddPlacePopupOpen}
         buttonText="Сохранить"
@@ -110,7 +114,8 @@ function App() {
       </PopupWithForm>
       <PopupWithForm
         title="Обновить аватар"
-        name="popup__heading"
+        name="avatar"
+        container="popup__container-avatar"
         onClose={closeAllPopup}
         isOpen={isEditAvatarPopupOpen}
         buttonText="Сохранить"
@@ -119,6 +124,7 @@ function App() {
           className="form__container form__container_type_avatar"
           name="avatar"
           type="url"
+          placeholder="https://somewebsite.com/someimage.jpg"
           id="avatar"
           required
         />

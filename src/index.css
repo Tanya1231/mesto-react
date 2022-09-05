@@ -74,9 +74,9 @@
 
 @import url(../src/blocks/popup/_open-img/popup_open-img.css);
 
-@import url(../src/blocks/popup/__container-avatar/popup__container-avatar.css);
-
 @import url(../src/blocks/popup/__container-delete/popup__container-delete.css);
+
+@import url(../src/blocks/popup/__container-avatar/popup__container-avatar.css);
 
 @import url(../src/blocks/element/__vector-counter/element__vector-counter.css);
 

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const PopupWithForm = ({ title, name, isOpen, onClose, buttonText, children}) => {
+const PopupWithForm = ({ title, name, isOpen, onClose, container, buttonText, children}) => {
     return (
-        <div className={`popup popup_${name} ${isOpen ? 'popup_open' : ''}`}>
-            <div className="popup__container">
+        <div className={`popup popup_type_${name} ${isOpen ? 'popup_open' : ''}`}>
+            <div className={`popup__container ${container}`}>
                 <form className={`form form_popup_${name}`} name={`${name}`} noValidate>
                     <h2 className="popup__heading">{title}</h2>
                     {children}
