@@ -23,7 +23,7 @@ const PopupWithForm = ({
           {children}
           <button
             type="submit"
-            className="form__button form__button_invalid"
+            className="form__button"
             value="Сохранить"
           >
             {buttonText}

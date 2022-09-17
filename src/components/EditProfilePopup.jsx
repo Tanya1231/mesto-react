@@ -2,18 +2,26 @@ import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 const EditProfilePopup = props => {
-  const profileNameRef = React.useRef();
-  const profileAboutRef = React.useRef();
+  const [name, setName] = React.useState();
+  const [about, setAbout] = React.useState();
+  
+
+  const handleNameChange = (evt) => {
+    setName(evt.target.value)
+  }
+
+  const handleAboutChange = (evt) => {
+   setAbout(evt.target.value)
+  }
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    props.onUpdateProfile(
-      profileNameRef.current.value,
-      profileAboutRef.current.value
-    );
-    profileNameRef.current.value = "";
-    profileAboutRef.current.value = "";
+    props.onUpdateProfile({
+      name: name,
+      about: about
+    })
   }
+
   return (
     <PopupWithForm
       isOpen={props.isOpen}
@@ -32,7 +40,8 @@ const EditProfilePopup = props => {
         id="name"
         minLength="2"
         maxLength="40"
-        ref={profileNameRef}
+        value={name || ''}
+        onChange={handleNameChange}
         required
       />
       <span className="error" id="name-error"></span>
@@ -44,7 +53,8 @@ const EditProfilePopup = props => {
         id="about"
         minLength="2"
         maxLength="200"
-        ref={profileAboutRef}
+        value={about || ''}
+        onChange={handleAboutChange}
         required
       />
       <span className="error" id="about-error"></span>

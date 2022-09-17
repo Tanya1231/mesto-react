@@ -2,18 +2,27 @@ import React from "react";
 import PopupWithForm from "./PopupWithForm";
 
 const AddPlacePopup = ({ isOpen, onClose, onAddPlace }) => {
-  const placeNameRef = React.useRef();
-  const placeLinkRef = React.useRef();
+  const [name, setName] = React.useState("");
+  const [link, setLink] = React.useState("");
 
   React.useEffect(() => {
-    placeNameRef.current.value = "";
-    placeLinkRef.current.value = "";
+    setName("");
+    setLink("");
   }, [isOpen]);
+
+  const handleNameChange = evt => {
+    setName(evt.target.value);
+  };
+
+  const handleLinkChange = evt => {
+    setLink(evt.target.value);
+  };
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onAddPlace(placeNameRef.current.value, placeLinkRef.current.value);
+    onAddPlace({ name, link });
   }
+  
   return (
     <PopupWithForm
       title="Новое место"
@@ -32,7 +41,8 @@ const AddPlacePopup = ({ isOpen, onClose, onAddPlace }) => {
         placeholder="Название"
         minLength="2"
         maxLength="30"
-        ref={placeNameRef}
+        value={name}
+        onChange={handleNameChange}
         required
       />
       <span className="error" id="info-error"></span>
@@ -42,7 +52,8 @@ const AddPlacePopup = ({ isOpen, onClose, onAddPlace }) => {
         id="link"
         type="url"
         placeholder="Ссылка на картинку"
-        ref={placeLinkRef}
+        value={link}
+        onChange={handleLinkChange}
         required
       />
       <span className="error" id="link-error"></span>
