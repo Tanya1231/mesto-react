@@ -19,13 +19,13 @@ export default class Api {
     return this._handleResponse(res);
   }
 
-  async editUserInfo(data) {
+  async editUserInfo(name, about) {
     const res = await fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name: data.name,
-        about: data.about,
+        name: name,
+        about: about,
       }),
     });
     return this._handleResponse(res);
@@ -38,24 +38,24 @@ export default class Api {
     return this._handleResponse(res);
   }
 
-  async setUserAvatar(data) {
+  async setUserAvatar(avatar) {
     const res = await fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: data.avatar,
+        avatar: avatar,
       }),
     });
     return this._handleResponse(res);
   }
 
-  async addCard(data) {
+  async addCard(name, link) {
     const res = await fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
-        name: data.name,
-        link: data.link,
+        name: name,
+        link: link,
       }),
     });
     return this._handleResponse(res);
@@ -76,6 +76,7 @@ export default class Api {
     });
     this._handleResponse(res);
   }
+  
 
   async removeLike(cardId) {
     const res = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
@@ -84,6 +85,14 @@ export default class Api {
     });
     return this._handleResponse(res);
   }
+
+async changeLikeCardStatus(cardId, isLiked) {
+  if(isLiked) {
+    return this.removeLike(cardId)
+  } else {
+    return this.putLike(cardId)
+  }
+}
 }
 
 export const api = new Api({

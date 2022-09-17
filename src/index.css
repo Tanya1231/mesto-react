@@ -81,3 +81,7 @@
 @import url(../src/blocks/element/__vector-counter/element__vector-counter.css);
 
 @import url(../src/blocks/profile/__avatar-edit/profile__avatar-edit.css);
+
+@import url(../src/blocks/element/__delete/_hidden/element__delete_hidden.css);
+
+@import url(../src/blocks/element/__delete/_visible/element__delete_visible.css);
