@@ -22,7 +22,7 @@ const AddPlacePopup = ({ isOpen, onClose, onAddPlace }) => {
     evt.preventDefault();
     onAddPlace({ name, link });
   }
-  
+
   return (
     <PopupWithForm
       title="Новое место"
@@ -41,7 +41,7 @@ const AddPlacePopup = ({ isOpen, onClose, onAddPlace }) => {
         placeholder="Название"
         minLength="2"
         maxLength="30"
-        value={name}
+        value={name || ""}
         onChange={handleNameChange}
         required
       />
@@ -52,7 +52,7 @@ const AddPlacePopup = ({ isOpen, onClose, onAddPlace }) => {
         id="link"
         type="url"
         placeholder="Ссылка на картинку"
-        value={link}
+        value={link || ""}
         onChange={handleLinkChange}
         required
       />
