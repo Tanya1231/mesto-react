@@ -1,25 +1,31 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 const EditProfilePopup = props => {
-  const [name, setName] = React.useState();
-  const [about, setAbout] = React.useState();
-  
+  const [name, setName] = React.useState("");
+  const [about, setAbout] = React.useState("");
+  const currentUser = React.useContext(CurrentUserContext);
 
-  const handleNameChange = (evt) => {
-    setName(evt.target.value)
-  }
+  const handleNameChange = evt => {
+    setName(evt.target.value);
+  };
 
-  const handleAboutChange = (evt) => {
-   setAbout(evt.target.value)
-  }
+  const handleAboutChange = evt => {
+    setAbout(evt.target.value);
+  };
+
+  React.useEffect(() => {
+    setName(currentUser.name);
+    setAbout(currentUser.about);
+  }, [currentUser]);
 
   function handleSubmit(evt) {
     evt.preventDefault();
     props.onUpdateProfile({
       name: name,
-      about: about
-    })
+      about: about,
+    });
   }
 
   return (
@@ -40,7 +46,7 @@ const EditProfilePopup = props => {
         id="name"
         minLength="2"
         maxLength="40"
-        value={name || ''}
+        value={name || ""}
         onChange={handleNameChange}
         required
       />
@@ -53,7 +59,7 @@ const EditProfilePopup = props => {
         id="about"
         minLength="2"
         maxLength="200"
-        value={about || ''}
+        value={about || ""}
         onChange={handleAboutChange}
         required
       />
