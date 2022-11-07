@@ -15,5 +15,3 @@
 
 
 Интерактивная страница, где можно редактировать свой профиль, добавлять фотографии, удалять их и ставить лайки. Ссылка на Figma https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript.-Sprint-9
-
-Ссылка на сайт https://tanya1231.github.io/mesto-react/
